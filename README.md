@@ -10,3 +10,16 @@ pack previously uploaded to LSPDFR.com. This callout pack will have the best cal
  Version of Visual Studio that this pack uses is Visual Studio Community 2019!
 
 My Personal Discord: https://discord.gg/jonjongamesstudios (Report Issues or get Early Access to newly added callouts before Public release)
+
+
+Download the dependecies:
+
+Rage Plugin Hook SDK: https://ragepluginhook.net/
+
+LSPDFR.dll from the LSPDFR Manual Download: https://www.lcpdfr.com/downloads/gta5mods/g17media/7792-lspd-first-response/
+//////////////////////////////////////////////////////////////////////
+// This is required for the new version of callout interface! //
+Callout Interface API: https://github.com/Immersive-Plugins-Team/CalloutInterfaceAPI
+/////////////////////////////////////////////////////////////////////
+
+PLEASE NOTIFY ME AHEAD OF TIME BEFORE MAKING ANY COMMITS FOR APPROVAL
