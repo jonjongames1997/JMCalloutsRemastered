@@ -17,6 +17,8 @@ Download the dependecies:
 Rage Plugin Hook SDK: https://ragepluginhook.net/
 
 LSPDFR.dll from the LSPDFR Manual Download: https://www.lcpdfr.com/downloads/gta5mods/g17media/7792-lspd-first-response/
+
+
 //////////////////////////////////////////////////////////////////////
 // This is required for the new version of callout interface! //
 Callout Interface API: https://github.com/Immersive-Plugins-Team/CalloutInterfaceAPI
