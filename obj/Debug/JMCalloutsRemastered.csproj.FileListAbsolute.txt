@@ -1,0 +1,12 @@
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\JMCalloutsRemastered.dll
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\JMCalloutsRemastered.pdb
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\LSPD First Response.dll
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\RagePluginHookSDK.dll
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.csproj.AssemblyReference.cache
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.csproj.CoreCompileInputs.cache
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.csproj.CopyComplete
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.dll
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.pdb
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\CalloutInterfaceAPI.dll
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\CalloutInterfaceAPI.xml
