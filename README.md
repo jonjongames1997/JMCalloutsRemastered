@@ -20,7 +20,8 @@ LSPDFR.dll from the LSPDFR Manual Download: https://www.lcpdfr.com/downloads/gta
 
 
 //////////////////////////////////////////////////////////////////////
-// This is required for the new version of callout interface! //
+// 
+This is required for the new version of callout interface! //
 Callout Interface API: https://github.com/Immersive-Plugins-Team/CalloutInterfaceAPI
 /////////////////////////////////////////////////////////////////////
 
