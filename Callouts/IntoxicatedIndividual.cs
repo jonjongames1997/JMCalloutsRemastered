@@ -32,13 +32,16 @@ namespace JMCalloutsRemastered.Callouts
             ShowCalloutAreaBlipBeforeAccepting(Spawnnpoint, 900f);
             AddMinimumDistanceCheck(900f, Spawnnpoint);
             CalloutPosition = Spawnnpoint;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "A business owner reported an individual being drunk on business property. Suspect refused to leave property. Owner said that suspect is possibly be drunk or under the influence of narcotics. Approach with caustion.");
+           
 
             return base.OnBeforeCalloutDisplayed();
         }
 
         public override bool OnCalloutAccepted()
         {
+        
+        CalloutInterfaceAPI.Functions.SendMessage(this, "A business owner reported an individual being drunk on business property. Suspect refused to leave property. Owner said that suspect is possibly be drunk or under the influence of narcotics. Approach with caustion.");
+        
             Suspect = new Ped(Spawnnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
