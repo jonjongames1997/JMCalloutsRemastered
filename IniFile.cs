@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.IO;
 
 namespace JMCalloutsRemastered
 {
@@ -10,84 +9,51 @@ namespace JMCalloutsRemastered
     /// </summary>
     public class IniFile
     {
-        private string filePath;
+        public string path;
 
-        public IniFile(string filePath)
+        [DllImport("kernel32")]
+        private static extern long WritePrivateProfileString(string section,
+            string key, string val, string filePath);
+        [DllImport("kernel32")]
+        private static extern int GetPrivateProfileString(string section,
+                 string key, string def, StringBuilder retVal,
+            int size, string filePath);
+
+        /// <summary>
+        /// INIFile Constructor.
+        /// </summary>
+        /// <PARAM name="INIPath"></PARAM>
+        public IniFile(string INIPath)
         {
-            this.filePath = filePath;
+            path = INIPath;
+        }
+        /// <summary>
+        /// Write Data to the INI File
+        /// </summary>
+        /// <PARAM name="Section"></PARAM>
+        /// Section name
+        /// <PARAM name="Key"></PARAM>
+        /// Key Name
+        /// <PARAM name="Value"></PARAM>
+        /// Value Name
+        public void IniWriteValue(string Section, string Key, string Value)
+        {
+            WritePrivateProfileString(Section, Key, Value, this.path);
         }
 
-        public string ReadValue(string section, string key)
+        /// <summary>
+        /// Read Data Value From the Ini File
+        /// </summary>
+        /// <PARAM name="Section"></PARAM>
+        /// <PARAM name="Key"></PARAM>
+        /// <PARAM name="Path"></PARAM>
+        /// <returns></returns>
+        public string IniReadValue(string Section, string Key)
         {
-            string value = "";
-            if (File.Exists(filePath))
-            {
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    string line;
-                    string currentSection = "";
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        line = line.Trim();
-                        if (line.StartsWith("[") && line.EndsWith("]"))
-                        {
-                            currentSection = line.Substring(1, line.Length - 2);
-                        }
-                        else if (currentSection.Equals(section) && line.StartsWith(key))
-                        {
-                            int startIndex = line.IndexOf("=") + 1;
-                            value = line.Substring(startIndex);
-                            break;
-                        }
-                    }
-                }
-            }
-            return value;
-        }
+            StringBuilder temp = new StringBuilder(255);
+            int i = GetPrivateProfileString(Section, Key, "", temp, 255, this.path);
+            return temp.ToString();
 
-        public void WriteValue(string section, string key, string value)
-        {
-            if (File.Exists(filePath))
-            {
-                string[] lines = File.ReadAllLines(filePath);
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-                    bool sectionFound = false;
-                    foreach (string line in lines)
-                    {
-                        if (line.StartsWith("[") && line.EndsWith("]"))
-                        {
-                            if (line.Substring(1, line.Length - 2).Equals(section))
-                            {
-                                sectionFound = true;
-                            }
-                            writer.WriteLine(line);
-                        }
-                        else if (sectionFound && line.StartsWith(key))
-                        {
-                            writer.WriteLine(key + "=" + value);
-                        }
-                        else
-                        {
-                            writer.WriteLine(line);
-                        }
-                    }
-                    if (!sectionFound)
-                    {
-                        writer.WriteLine();
-                        writer.WriteLine("[" + section + "]");
-                        writer.WriteLine(key + "=" + value);
-                    }
-                }
-            }
-            else
-            {
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-                    writer.WriteLine("[" + section + "]");
-                    writer.WriteLine(key + "=" + value);
-                }
-            }
         }
     }
 }

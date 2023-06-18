@@ -34,28 +34,28 @@ namespace JMCalloutsRemastered
                     Game.Console.Print();
 
                     // You can find all textures/images in OpenIV
-                    Game.DisplayNotification("web_lossantospolicedept", "web_lossantospolicedept", "UnitedCallouts", "~y~v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() + " ~o~by sEbi3", "~b~successfully loaded!");
+                    Game.DisplayNotification("web_lossantospolicedept", "web_lossantospolicedept", "JMCalloutsRemastered", "~y~v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() + " ~o~by OfficerMorrison", "~b~successfully loaded!");
                     // Game.DisplayNotification("web_lossantospolicedept", "web_lossantospolicedept", "UnitedCallouts", "~y~Unstable Build", "This is an ~r~unstable build~w~ of UnitedCallouts for testing. You may notice bugs while playing the unstable build.");
 
                     PluginCheck.isUpdateAvailable();
                     GameFiber.Wait(300);
-                    if (Settings.HelpMessages)
-                    {
-                        Game.DisplayHelp("You can change all ~y~keys~w~ in the ~g~UnitedCallouts.ini~w~. Press ~b~" + Settings.EndCall + "~w~ to end a callout.", 5000);
-                    }
-                    else { Settings.HelpMessages = false; }
                 });
         }
         private static void RegisterCallouts() //Register all your callouts here
         {
             Game.Console.Print();
-            Game.Console.Print("================================================== UnitedCallouts ===================================================");
+            Game.Console.Print("================================================== JMCalloutsRemastered ===================================================");
             Game.Console.Print();
             if (Settings.IllegalCampfireOnPublicBeach) { Functions.RegisterCallout(typeof(IllegalCampfireOnPublicBeach)); }
-           
+            if(Settings.IntoxicatedIndividual) { Functions.RegisterCallout(typeof(IntoxicatedIndividual)); }
+            if(Settings.RefuseToLeave) { Functions.RegisterCallout(typeof(RefuseToLeave)); }
+            if(Settings.RefuseToPay) { Functions.RegisterCallout(typeof(RefuseToPay)); }
+            if(Settings.PossibleProstitution) { Functions.RegisterCallout(typeof(PossibleProstitution)); }
+            if(Settings.Soliciting) { Functions.RegisterCallout(typeof(Soliciting)); }
+            if(Settings.TrespassingOnPrivateProperty) { Functions.RegisterCallout(typeof(TrespassingOnPrivateProperty)); }
             Game.Console.Print("[LOG]: All callouts of the JMCalloutsRemastered.ini were loaded successfully.");
             Game.Console.Print();
-            Game.Console.Print("================================================== UnitedCallouts ===================================================");
+            Game.Console.Print("================================================== JMCalloutsRemastered ===================================================");
             Game.Console.Print();
         }
     }
