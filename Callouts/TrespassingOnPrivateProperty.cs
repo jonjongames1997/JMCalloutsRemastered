@@ -33,16 +33,16 @@ namespace JMCalloutsRemastered.Callouts
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 1900f);
             AddMaximumDistanceCheck(1900f, Spawnpoint);
             CalloutPosition = Spawnpoint;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "A homeowner reported an individual trespassing on their property. Issue them a citation or arrest them and charge them with criminal mischief. Your Choice.");
 
             return base.OnBeforeCalloutDisplayed();
         }
 
         public override bool OnCalloutAccepted()
         {
-            Suspect = new Ped("PLAYER_TWO", Spawnpoint, heading);
+            Suspect = new Ped(Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
+            CalloutInterfaceAPI.Functions.SendMessage(this, "A homeowner reported an individual trespassing on their property. Issue them a citation or arrest them and charge them with criminal mischief. Your Choice.");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.Black;
@@ -85,15 +85,15 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 4)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~~ Taking pics of my ex-girlfriend naked so I can go home and stroke my amazing cock-a-doodle-doo. Is that a problem?");
+                        Game.DisplaySubtitle("~r~Suspect:~~ Trying to ask my ex-boyfriend/girlfriend to pose as model for my photography ad. Is that a problem?");
                     }
                     if(counter == 5)
                     {
-                        Game.DisplaySubtitle("Player: Yes, that's invasion of privacy that can get you arrested here in Los Santos. I need you to leave the property cause the owner is requesting a restraining order against you.");
+                        Game.DisplaySubtitle("Player: Yes, the owner of this house doesn't want you here and they said you've been trespassed before. I need you to leave the property cause the owner is requesting a restraining order against you.");
                     }
                     if(counter == 6)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~~ That bitch! I'll fucking rape... I mean wait till I see her in public.");
+                        Game.DisplaySubtitle("~r~Suspect:~~ That son of a bitch! I'll wait till I see her/him in public.");
                     }
                     if(counter == 7)
                     {
@@ -102,12 +102,12 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 8)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~~ Fuck you, Dick Tickler!");
+                        Game.DisplaySubtitle("~r~Suspect:~~ You'll never take me alive, Copper!!");
                     }
                     if(counter == 9)
                     {
                         Game.DisplayNotification("Conversation has ended. Handle the situation your way, Officer.");
-                        Suspect.Tasks.ReactAndFlee(Suspect);
+                        Suspect.Tasks.FightAgainst(Suspect);
                     }
                 }
             }

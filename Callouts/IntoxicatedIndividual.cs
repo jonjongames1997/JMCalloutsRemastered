@@ -29,10 +29,9 @@ namespace JMCalloutsRemastered.Callouts
         {
             Spawnnpoint = new Vector3(94.63f, -217.37f, 54.49f);
             heading = 53.08f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnnpoint, 900f);
-            AddMinimumDistanceCheck(900f, Spawnnpoint);
+            ShowCalloutAreaBlipBeforeAccepting(Spawnnpoint, 2500f);
+            AddMinimumDistanceCheck(2500f, Spawnnpoint);
             CalloutPosition = Spawnnpoint;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "A business owner reported an individual being drunk on business property. Suspect refused to leave property. Owner said that suspect is possibly be drunk or under the influence of narcotics. Approach with caustion.");
 
             return base.OnBeforeCalloutDisplayed();
         }
@@ -42,6 +41,7 @@ namespace JMCalloutsRemastered.Callouts
             Suspect = new Ped(Spawnnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
+            CalloutInterfaceAPI.Functions.SendMessage(this, "A business owner reported an individual being drunk on business property. Suspect refused to leave property. Owner said that suspect is possibly be drunk or under the influence of narcotics. Approach with caustion.");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.CadetBlue;

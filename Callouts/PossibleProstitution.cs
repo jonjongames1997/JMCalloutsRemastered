@@ -30,12 +30,10 @@ namespace JMCalloutsRemastered.Callouts
         {
             Spawnpoint = new Vector3(481.524f, -1689.046f, 29.240f);
             heading = 223.525f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 1900f);
-            AddMaximumDistanceCheck(1900f, Spawnpoint);
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            AddMaximumDistanceCheck(2500f, Spawnpoint);
             CalloutMessage = "Citizens reporting a young female possibly selling her body for money.";
             CalloutPosition = Spawnpoint;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "A citizen reported a young female selling her body for money. Talk to her and see if the claim is true. Approach with caution.");
-            Game.DisplayNotification("Tip: This callout works better at night time when other prostitutes are on the streets.");
 
             return base.OnBeforeCalloutDisplayed();
         }
@@ -45,6 +43,8 @@ namespace JMCalloutsRemastered.Callouts
             Suspect = new Ped("S_F_Y_HOOKER_01", Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
+            CalloutInterfaceAPI.Functions.SendMessage(this, "A citizen reported a young female selling her body for money. Talk to her and see if the claim is true. Approach with caution.");
+            Game.DisplayNotification("Tip: This callout works better at night time when other prostitutes are on the streets.");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.Cyan;
@@ -63,7 +63,7 @@ namespace JMCalloutsRemastered.Callouts
         {
             base.Process();
 
-            if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
+            if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 0f)
             {
 
                 Game.DisplayHelp("Press 'E' to interact with suspect.");

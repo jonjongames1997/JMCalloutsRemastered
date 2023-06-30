@@ -4,36 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rage;
+using CalloutInterfaceAPI;
 using LSPD_First_Response.Mod.API;
 using LSPD_First_Response.Mod.Callouts;
 using System.Drawing;
-using CalloutInterfaceAPI;
 using System.Windows.Forms;
 
 namespace JMCalloutsRemastered.Callouts
 {
 
-    [CalloutInterface("Refuse To Leave", CalloutProbability.Medium, "An individual refuses to leave property", "Code 2", "BSCO")]
+    [CalloutInterface("Trespassing On Railroad Property", CalloutProbability.High, "A citizen trespassing on Railroad Property", "Code 3", "LSPD")]
 
-    public class RefuseToLeave : Callout
+    public class TrespassingOnRailRoadProperty : Callout
     {
+
 
         // General Variables //
         private Ped Suspect;
         private Blip SuspectBlip;
         private Vector3 Spawnpoint;
-        private float heading;
         private int counter;
+        private float heading;
         private string malefemale;
-
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(1198.61f, 2706.30f, 38.22f);
-            heading = 182.75f;
+            Spawnpoint = new Vector3(452.94f, -1648.89f, 29.97f);
+            heading = 225.98f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
             AddMaximumDistanceCheck(2500f, Spawnpoint);
-            CalloutMessage = "Individual refusing to leave property by business owner/employee.";
+            CalloutMessage = "A citizen is reporting a suspicious person on railroad tracks.";
             CalloutPosition = Spawnpoint;
 
             return base.OnBeforeCalloutDisplayed();
@@ -41,14 +41,13 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnCalloutAccepted()
         {
-            Suspect = new Ped("A_F_Y_RURMETH_01", Spawnpoint, heading); // For Testing purposes //
+            Suspect = new Ped(Spawnpoint, heading); // Optional if you want to add a ped for the callout. If you don't want a specific ped for the callout, just put 'Spawnpoint' and 'heading' in the brackets.
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "Route 68 Business employee told the individual to leave the property but refuses to. Employee suspects the individual to be under the influence.");
+            CalloutInterfaceAPI.Functions.SendMessage(this, "A citizen reporting a suspicious female on the railroad tracks. Possibly high on drugs. Approach with caution.");
 
             SuspectBlip = Suspect.AttachBlip();
-            SuspectBlip.Color = System.Drawing.Color.BlueViolet;
-            SuspectBlip.IsRouteEnabled = true;
+            SuspectBlip.Color = System.Drawing.Color.CadetBlue;
 
             if (Suspect.IsMale)
                 malefemale = "sir";
@@ -67,64 +66,59 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'E' to interact with suspect. ~y~Approach with caution.");
+                Game.DisplayHelp("Press 'Y' to interact with Suspect.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
                 {
                     counter++;
 
                     if(counter == 1)
                     {
-                        Game.DisplaySubtitle("Player: Hello there " + malefemale + ", Can I talk to you for a second?");
+                        Game.DisplaySubtitle("Player: Hello there " + malefemale + ". Can I speak to you for a moment?");
                     }
                     if(counter == 2)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: What now donut pigs?");
+                        Game.DisplaySubtitle("~r~Suspect: ALIENS! ALIENS! They're here! RUN FOR YOUR LIVES!");
                     }
                     if(counter == 3)
                     {
-                        Game.DisplaySubtitle("Player: Can you tell me what's going on?");
+                        Game.DisplaySubtitle("Player: " + malefemale + ", Calm down for me please.");
                     }
                     if(counter == 4)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: That bitch over there told me I can't come in here.");
+                        Game.DisplaySubtitle("~r~Suspect: Oh, I thought you were an alien. Sorry, Officer. What's up? Want to smoke some crack? Smoke some weed?");
                     }
                     if(counter == 5)
                     {
-                        Game.DisplaySubtitle("Player: Is there a reason why she can't let you come in here?");
+                        Game.DisplaySubtitle("Player: Did you do any illegal drugs that I should know about? and why are you on railroad property?");
                     }
                     if(counter == 6)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: I was outside the door asking people for money. She called the cops and they told me that I was trespassed from the property.");
+                        Game.DisplaySubtitle("~r~Suspect: Yeah, drugs are the 2nd best medicine cause laughter is the #1 best medicine. I'm trying to record some videos of the trains coming through. Why?");
                     }
                     if(counter == 7)
                     {
-                        Game.DisplayNotification("Tip: ~o~If the suspect was trespassed from the property before, that's an arrestable offense.");
+                        Game.DisplaySubtitle("Player: Well" + malefemale + ", that's fine but you can't be on the tracks cause people have been comitting suicde by train almost every year. As long as you're on the other side of the crossing, that's fine. Can I see some identification from you if it's in your posession?");
                     }
                     if(counter == 8)
                     {
-                        Game.DisplaySubtitle("Player: Ok. Well, you know you can be arrested for trespassing, right?");
+                        Game.DisplaySubtitle("~r~Suspect: What's a indentification again?");
                     }
                     if(counter == 9)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: WHAT?! Are you fucking with me?");
+                        Game.DisplaySubtitle("Player: " + malefemale + ", you're under arrest.");
                     }
                     if(counter == 10)
                     {
-                        Game.DisplaySubtitle("Player: No, I'm not. Don't try anything stupid, you'll make things worse on yourself.");
+                        Game.DisplaySubtitle("~Suspect: You gotta catch me first!");
                     }
                     if(counter == 11)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Fuck you and fuck her! I'm outta here, playa!");
-                    }
-                    if(counter == 12)
-                    {
-                        Game.DisplaySubtitle("Conversation ended!");
-                        Suspect.Tasks.ReactAndFlee(Suspect);
+                        Game.DisplaySubtitle("Conversation ended.");
+                        Suspect.Tasks.ReactAndFlee(Suspect); // What the suspect will do after the conversation ends //
                     }
                 }
             }
-
             if (Suspect.IsCuffed || Suspect.IsDead || Game.LocalPlayer.Character.IsDead || !Suspect.Exists())
             {
                 End();
@@ -145,7 +139,7 @@ namespace JMCalloutsRemastered.Callouts
             }
 
 
-            Game.LogTrivial("JM Callouts Remastered BETA - Refuse to leave is Code 4!");
+            Game.LogTrivial("JM Callouts Remastered - Trespassing On Railroad Property is Code 4!");
         }
 
     }

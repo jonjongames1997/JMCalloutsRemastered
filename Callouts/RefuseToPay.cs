@@ -28,12 +28,11 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3();
-            heading = 125.66f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 500f);
-            AddMaximumDistanceCheck(500f, Spawnpoint);
+            Spawnpoint = new Vector3(-1018.68f, -1356.36f, 5.55f);
+            heading = 338.10f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            AddMaximumDistanceCheck(2500f, Spawnpoint);
             CalloutMessage = "Individual Refusing to pay";
-            CalloutInterfaceAPI.Functions.SendMessage(this, "An Individual is refusing to pay for their food. The individual is being little aggressive. Approach with caution");
 
             return base.OnBeforeCalloutDisplayed();
         }
@@ -43,6 +42,7 @@ namespace JMCalloutsRemastered.Callouts
             Suspect = new Ped(Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
+            CalloutInterfaceAPI.Functions.SendMessage(this, "An Individual is refusing to pay for their food. The individual is being little aggressive. Approach with caution");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.HotPink;
@@ -105,7 +105,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 9)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Yeah, fine. I'm in a hurry to a porno production to tape a recording of me and my daughter in 'Oh, yes, Daddy!' in Rockford Hills.");
+                        Game.DisplaySubtitle("~r~Suspect: Yeah, fine. I'm in a hurry to a film production in Rockford Hills.");
                     }
                     if (counter == 10)
                     {

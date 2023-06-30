@@ -28,22 +28,22 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3();
-            heading = 125.78f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 500f);
-            AddMaximumDistanceCheck(500f, Spawnpoint);
+            Spawnpoint = new Vector3(-1224.37f, -906.26f, 12.33f);
+            heading = 40.35f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            AddMaximumDistanceCheck(2500f, Spawnpoint);
             CalloutMessage = "An Individual asking people for money.";
-            CalloutInterfaceAPI.Functions.SendMessage(this, "An individual is asking people for money and harassing them. Deal with this, Officer.");
-            Game.DisplayNotification("Make sure you're in range before accepting this callout");
 
             return base.OnBeforeCalloutDisplayed();
         }
 
         public override bool OnCalloutAccepted()
         {
-            Suspect = new Ped(Spawnpoint, heading);
+            Suspect = new Ped("IG_LAMARDAVIS", Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
+            CalloutInterfaceAPI.Functions.SendMessage(this, "An individual is asking people for money and harassing them. Deal with this, Officer.");
+            Game.DisplayNotification("Make sure you're in range before accepting this callout");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.Indigo;

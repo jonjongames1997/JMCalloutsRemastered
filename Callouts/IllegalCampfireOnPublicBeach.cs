@@ -30,11 +30,10 @@ namespace JMCalloutsRemastered.Callouts
         {
             Spawnpoint = new Vector3(-1539.16f, -1215.71f, 1.88f); // Campfire Spawns at night //
             heading = 250.07f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 1900f); // Blips the area of the callout //
-            AddMaximumDistanceCheck(1900f, Spawnpoint); // Checks to see if the player is in range of the callout //
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f); // Blips the area of the callout //
+            AddMaximumDistanceCheck(2500f, Spawnpoint); // Checks to see if the player is in range of the callout //
             CalloutMessage = "Individual started an illegal campfire on the beach!"; // Brief description of the call //
             CalloutPosition = Spawnpoint; // Gives the position of where the callout is located at //
-            CalloutInterfaceAPI.Functions.SendMessage(this, "Vespucci Beach Security reporting an individual starting a campfire on the beach. Suspect refused to put out the fire as requested by security. Suspect also refused to leave the beach. Approach with caution. Suspect may be armed.");
 
             return base.OnBeforeCalloutDisplayed();
         }
@@ -44,6 +43,7 @@ namespace JMCalloutsRemastered.Callouts
             Suspect = new Ped(Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
+            CalloutInterfaceAPI.Functions.SendMessage(this, "Vespucci Beach Security reporting an individual starting a campfire on the beach. Suspect refused to put out the fire as requested by security. Suspect also refused to leave the beach. Approach with caution. Suspect may be armed.");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.Chocolate;
@@ -108,7 +108,10 @@ namespace JMCalloutsRemastered.Callouts
                     {
                         Game.DisplaySubtitle("Conversation has ended!");
                         Game.DisplayNotification("Arrest the suspect, Officer.");
-                        Suspect.Tasks.ReactAndFlee(Suspect);
+                    }
+                    if(counter == 10)
+                    {
+                        Suspect.Tasks.FightAgainst(Suspect);
                     }
                 }
             }
