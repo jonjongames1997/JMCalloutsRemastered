@@ -31,7 +31,7 @@ namespace JMCalloutsRemastered
             {
                 RegisterCallouts();
 
-                Game.DisplayNotification("JM Callouts Remastered by OfficerMorrison | ~y~Version 2.9.1 | has successfully loaded!");
+                Game.DisplayNotification("JM Callouts Remastered by OfficerMorrison | ~y~Version 2.10.3 | has successfully loaded!");
             }
         }
 
@@ -46,6 +46,8 @@ namespace JMCalloutsRemastered
             Functions.RegisterCallout(typeof(Callouts.Soliciting));
             Functions.RegisterCallout(typeof(Callouts.IllegalProstitution));
             Functions.RegisterCallout(typeof(Callouts.TrespassingOnRailRoadProperty));
+            Functions.RegisterCallout(typeof(Callouts._911HangUp));
+            Functions.RegisterCallout(typeof(Callouts.CodeKaren));
         }
 
         public static Assembly LSPDFRResolveEventHandler(object sender, ResolveEventArgs args)

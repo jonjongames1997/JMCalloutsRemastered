@@ -48,6 +48,7 @@ namespace JMCalloutsRemastered.Callouts
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.CadetBlue;
+            SuspectBlip.IsRouteEnabled = true;
 
             if (Suspect.IsMale)
                 malefemale = "sir";

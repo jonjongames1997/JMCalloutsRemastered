@@ -137,7 +137,7 @@ namespace JMCalloutsRemastered.Callouts
             }
 
 
-            Game.LogTrivial("JM Callouts Remastered BETA - Illegal Campfire On Public Beach is Code 4!");
+            Game.LogTrivial("JM Callouts Remastered - Illegal Campfire On Public Beach is Code 4!");
 
         }
     }
