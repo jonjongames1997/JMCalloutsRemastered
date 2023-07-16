@@ -79,7 +79,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 2)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: ALIENS! ALIENS! They're here! RUN FOR YOUR LIVES!");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ ALIENS! ALIENS! They're here! RUN FOR YOUR LIVES!");
                     }
                     if(counter == 3)
                     {
@@ -87,15 +87,15 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 4)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Oh, I thought you were an alien. Sorry, Officer. What's up? Want to smoke some crack? Smoke some weed?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Oh, I thought you were an alien. Sorry, Officer. What's up? Want to smoke some crack? Smoke some weed?");
                     }
                     if(counter == 5)
                     {
-                        Game.DisplaySubtitle("Player: Did you do any illegal drugs that I should know about? and why are you on railroad property?");
+                        Game.DisplaySubtitle("Player:~w~ Did you do any illegal drugs that I should know about? and why are you on railroad property?");
                     }
                     if(counter == 6)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Yeah, drugs are the 2nd best medicine cause laughter is the #1 best medicine. I'm trying to record some videos of the trains coming through. Why?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Yeah, drugs are the 2nd best medicine cause laughter is the #1 best medicine. I'm trying to record some videos of the trains coming through. Why?");
                     }
                     if(counter == 7)
                     {
@@ -103,7 +103,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 8)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: What's a indentification again?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ What's a indentification again?");
                     }
                     if(counter == 9)
                     {
@@ -111,7 +111,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 10)
                     {
-                        Game.DisplaySubtitle("~Suspect: You gotta catch me first!");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ You gotta catch me first!");
                     }
                     if(counter == 11)
                     {

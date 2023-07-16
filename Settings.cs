@@ -13,9 +13,9 @@ namespace JMCalloutsRemastered
         internal static bool _911HangUp = false; // Temporarily disabled until further notice //
         internal static bool PossibleProstitution = true;
         internal static bool PublicDisturbance = false; // Temporarily disabled //
-        internal static bool RefuseToPay = true;
+        internal static bool RefuseToPay = true; // Must be in Sandy Shores to take this call //
         internal static bool RefuseToLeave = true;
-        internal static bool Soliciting = true;
+        internal static bool Soliciting = false; // Disabled for testing and bug fixing //
         internal static bool TrespassingOnPrivateProperty = true;
         internal static bool TrespassingOnRailRoadProperty = true;
         internal static bool CodeKaren = false; // Temporarily Disabled //
@@ -42,6 +42,6 @@ namespace JMCalloutsRemastered
             TrespassingOnRailRoadProperty = ini.ReadBoolean("Callouts", "TrespassingOnRailRoadProperty", true);
         }
 
-        public static readonly string PluginVersion = "2.10.3";
+        public static readonly string PluginVersion = "3.0.1";
     }
 }

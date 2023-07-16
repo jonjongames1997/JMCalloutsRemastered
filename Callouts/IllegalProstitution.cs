@@ -79,7 +79,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 2)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Sure. What seems to be the problem, Officer?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Sure. What seems to be the problem, Officer?");
                     }
                     if(counter == 3)
                     {
@@ -87,7 +87,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 4)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Well, cutie.....");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Well, cutie.....");
                     }
                     if(counter == 5)
                     {
@@ -95,7 +95,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 6)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Sorry, Officer. I need money for food. You know, with inflation being out of control. I can't afford like a box of Cap'n Crunch which is $4.95 a box. Nobody is hiring and this is my only option.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Sorry, Officer. I need money for food. You know, with inflation being out of control. I can't afford like a box of Cap'n Crunch which is $4.95 a box. Nobody is hiring and this is my only option.");
                     }
                     if(counter == 7)
                     {
@@ -107,25 +107,21 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 9)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: I see where you're coming from.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ I see where you're coming from.");
                     }
                     if(counter == 10)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Yes, sir. Sorry about this. I won't do this again.");
-                    }
-                    if(counter == 11)
-                    {
                         Game.DisplayNotification("Chief: Good Job, Officer. You're getting a promotion.");
                     }
-                    if (counter == 12)
+                    if (counter == 11)
                     {
                         Game.DisplaySubtitle("Player: " + malefemale + ", I'm trying to do my job and prevent you from doing this. I'm giving you the opportunity to walk home or I'll have to place you in cuffs and charge you with prostitution.");
                     }
-                    if(counter == 13)
+                    if(counter == 12)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Yes, sir. I promise I won't be back here again.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Yes, Officer. I promise I won't be back here again.");
                     }
-                    if(counter == 15)
+                    if(counter == 13)
                     {
                         Game.DisplaySubtitle("Conversation ended. Arrest the suspect.");
                         Suspect.Tasks.Wander(); // What the suspect will do after the conversation ends //

@@ -77,7 +77,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 2)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: About fucking time you showed up, officer!");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ About fucking time you showed up, officer!");
                     }
                     if (counter == 3)
                     {
@@ -89,7 +89,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 5)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: I was ordering my food and went to sit down then they served me my food, I found hair in the food. I told them that I wasn't gonna pay for this. The cook or whatever said said that I put my own hair in the food.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ I was ordering my food and went to sit down then they served me my food, I found hair in the food. I told them that I wasn't gonna pay for this. The cook or whatever said said that I put my own hair in the food.");
                     }
                     if (counter == 6)
                     {
@@ -97,7 +97,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 7)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: I told them, 'No I didn't this is what was served to me and I'm not paying for this food'. Then they called the cops and now I'm talking to you.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ I told them, 'No I didn't this is what was served to me and I'm not paying for this food'. Then they called the cops and now I'm talking to you.");
                     }
                     if (counter == 8)
                     {
@@ -105,7 +105,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 9)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Yeah, fine. I'm in a hurry to a film production in Rockford Hills.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Yeah, fine. I'm in a hurry to a film production in Rockford Hills.");
                     }
                     if (counter == 10)
                     {
@@ -121,7 +121,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 13)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Fuck this shit, I'm outta here!");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Fuck this shit, I'm outta here!");
                     }
                     if (counter == 14)
                     {

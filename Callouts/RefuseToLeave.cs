@@ -41,7 +41,7 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnCalloutAccepted()
         {
-            Suspect = new Ped("A_F_Y_RURMETH_01", Spawnpoint, heading); // For Testing purposes //
+            Suspect = new Ped(Spawnpoint, heading); // For Testing purposes //
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
             CalloutInterfaceAPI.Functions.SendMessage(this, "Route 68 Business employee told the individual to leave the property but refuses to. Employee suspects the individual to be under the influence.");
@@ -79,7 +79,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 2)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: What now donut pigs?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ What now donut pigs?");
                     }
                     if(counter == 3)
                     {
@@ -87,7 +87,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 4)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: That bitch over there told me I can't come in here.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ That bitch over there told me I can't come in here.");
                     }
                     if(counter == 5)
                     {
@@ -95,7 +95,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 6)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: I was outside the door asking people for money. She called the cops and they told me that I was trespassed from the property.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ I was outside the door asking people for money. She called the cops and they told me that I was trespassed from the property.");
                     }
                     if(counter == 7)
                     {
@@ -107,7 +107,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 9)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: WHAT?! Are you fucking with me?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ WHAT?! Are you fucking with me?");
                     }
                     if(counter == 10)
                     {
@@ -115,7 +115,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 11)
                     {
-                        Game.DisplaySubtitle("~r~Suspect: Fuck you and fuck her! I'm outta here, playa!");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Fuck you and fuck her! I'm outta here, playa!");
                     }
                     if(counter == 12)
                     {

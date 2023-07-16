@@ -77,7 +77,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 2)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~~ What do you want now pigs?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ What do you want now pigs?");
                     }
                     if(counter == 3)
                     {
@@ -85,7 +85,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 4)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~~ Trying to ask my ex-boyfriend/girlfriend to pose as model for my photography ad. Is that a problem?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Trying to ask my ex-boyfriend/girlfriend to pose as model for my photography ad. Is that a problem?");
                     }
                     if(counter == 5)
                     {
@@ -93,7 +93,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 6)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~~ That son of a bitch! I'll wait till I see her/him in public.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ That son of a bitch! I'll wait till I see her/him in public.");
                     }
                     if(counter == 7)
                     {
@@ -102,7 +102,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 8)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~~ You'll never take me alive, Copper!!");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ You'll never take me alive, Copper!!");
                     }
                     if(counter == 9)
                     {

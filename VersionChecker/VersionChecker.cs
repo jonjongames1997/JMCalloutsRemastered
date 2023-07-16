@@ -7,7 +7,7 @@ namespace JMCalloutsRemastered.VersionChecker
     public class VersionChecker
     {
 
-        public bool isUpdateAvailable()
+        public static bool isUpdateAvailable()
         {
             string curVersion = Settings.PluginVersion;
             Uri latestVersionUri = new Uri("https://www.lcpdfr.com/applications/downloadsng/interface/api.php?do=checkForUpdates&fileId=43616&textOnly=1");
