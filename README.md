@@ -11,6 +11,7 @@ pack previously uploaded to LSPDFR.com. This callout pack will have the best cal
 
 My Personal Discord: https://discord.gg/jonjongamesstudios (Report Issues or get Early Access to newly added callouts before Public release)
 
+Version Checker code was from UnitedCallouts by Sebi3 as a GUIDE.
 
 Download the dependecies:
 
