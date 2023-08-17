@@ -31,7 +31,7 @@ namespace JMCalloutsRemastered.Callouts
             Spawnpoint = new Vector3(481.524f, -1689.046f, 29.240f);
             heading = 223.525f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMaximumDistanceCheck(2500f, Spawnpoint);
+            AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "Citizens reporting a young female possibly selling her body for money.";
             CalloutPosition = Spawnpoint;
 
@@ -40,7 +40,7 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnCalloutAccepted()
         {
-            Suspect = new Ped("S_F_Y_HOOKER_01", Spawnpoint, heading);
+            Suspect = new Ped("S_F_Y_HOOKER_02", Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
             CalloutInterfaceAPI.Functions.SendMessage(this, "A citizen reported a young female selling her body for money. Talk to her and see if the claim is true. Approach with caution.");
@@ -67,9 +67,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 0f)
             {
 
-                Game.DisplayHelp("Press 'E' to interact with suspect.");
+                Game.DisplayHelp("Press 'Y' to interact with suspect.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
                 {
                     counter++;
 

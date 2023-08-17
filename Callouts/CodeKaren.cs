@@ -30,10 +30,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3();
-            heading = 25.69f;
+            Spawnpoint = new Vector3(-623.00f, -233.19f, 38.06f); // Vangelico Jewellery Store // 
+            heading = 312.93f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMinimumDistanceCheck(2500f, Spawnpoint);
+            AddMinimumDistanceCheck(10f, Spawnpoint);
             CalloutMessage = "A business employee requesting an officer to escort a individual causing a scene";
             CalloutPosition = Spawnpoint;
 
@@ -42,6 +42,7 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnCalloutAccepted()
         {
+            Game.DisplayNotification("This Callout requires 'Open All Interiors' mod. Make sure to have it installed. If you do have it installed, you're good!");
             Suspect = new Ped(Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;

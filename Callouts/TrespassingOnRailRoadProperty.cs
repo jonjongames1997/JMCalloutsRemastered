@@ -32,7 +32,7 @@ namespace JMCalloutsRemastered.Callouts
             Spawnpoint = new Vector3(452.94f, -1648.89f, 29.97f);
             heading = 225.98f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMaximumDistanceCheck(2500f, Spawnpoint);
+            AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "A citizen is reporting a suspicious person on railroad tracks.";
             CalloutPosition = Spawnpoint;
 
@@ -99,7 +99,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 7)
                     {
-                        Game.DisplaySubtitle("Player: Well" + malefemale + ", that's fine but you can't be on the tracks cause people have been comitting suicde by train almost every year. As long as you're on the other side of the crossing, that's fine. Can I see some identification from you if it's in your posession?");
+                        Game.DisplaySubtitle("Player: Well " + malefemale + ", that's fine but you can't be on the tracks cause people have been comitting suicde by train almost every year. As long as you're on the other side of the crossing, that's fine. Can I see some identification from you if it's in your posession?");
                     }
                     if(counter == 8)
                     {

@@ -9,6 +9,7 @@ using LSPD_First_Response.Mod.API;
 using LSPD_First_Response.Mod.Callouts;
 using System.Drawing;
 using System.Windows.Forms;
+using Rage.Native;
 
 namespace JMCalloutsRemastered
 {
@@ -24,12 +25,14 @@ namespace JMCalloutsRemastered
         private Vector3 spawnPoint;
         private int counter;
         private string malefemale;
+        private float heading;
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            spawnPoint = World.GetNextPositionOnStreet(Game.LocalPlayer.Character.Position.Around(500f));
-            ShowCalloutAreaBlipBeforeAccepting(spawnPoint, 50f);
-            AddMinimumDistanceCheck(80f, spawnPoint);
+            spawnPoint = new Vector3(-516.6439f, -241.5553f, 35.80675f);
+            heading = 204.8449f;
+            ShowCalloutAreaBlipBeforeAccepting(spawnPoint, 2500f);
+            AddMinimumDistanceCheck(100f, spawnPoint);
             CalloutMessage = "Public Disturbance";
             CalloutPosition = spawnPoint;
 
@@ -38,13 +41,11 @@ namespace JMCalloutsRemastered
 
         public override bool OnCalloutAccepted()
         {
-            suspect = new Ped(spawnPoint);
+            suspect = new Ped(spawnPoint, heading);
             suspect.IsPersistent = true;
             suspect.BlockPermanentEvents = true;
 
-            CalloutInterfaceAPI.Functions.SendMessage(this, "A citizens report of an individual causing a scene at the Lucky Plucker. Citizen claims to be under the influence of narcotics. Proceed with caution.");
-
-            suspect.Tasks.Wander();
+            CalloutInterfaceAPI.Functions.SendMessage(this, "A citizens report of an individual threatening another civilian with a firearm. Citizen claims to be under the influence of narcotics. Proceed with caution.");
 
             SuspectBlip = suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.Black;
@@ -69,7 +70,7 @@ namespace JMCalloutsRemastered
                 // e.g., prompt for ID, perform an arrest, etc.
 
                 // For example:
-                Game.DisplayHelp("Approach the suspect and talk to them.", false);
+                Game.DisplayHelp("Approach the suspect and talk to them by pressing 'Y'.", false);
 
                 if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
                 {
@@ -94,7 +95,7 @@ namespace JMCalloutsRemastered
                     if(counter == 5)
                     {
                         Game.DisplaySubtitle("~r~Suspect: Fuck you, motherfucker. Time to give you an ass whooping!");
-                        suspect.Tasks.FightAgainst(suspect);
+                        suspect.Tasks.FightAgainstClosestHatedTarget(20f);
                     }
                 }
             }

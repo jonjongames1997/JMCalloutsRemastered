@@ -32,7 +32,7 @@ namespace JMCalloutsRemastered.Callouts
             Spawnpoint = new Vector3(1198.61f, 2706.30f, 38.22f);
             heading = 182.75f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMaximumDistanceCheck(2500f, Spawnpoint);
+            AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "Individual refusing to leave property by business owner/employee.";
             CalloutPosition = Spawnpoint;
 
@@ -67,9 +67,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'E' to interact with suspect. ~y~Approach with caution.");
+                Game.DisplayHelp("Press 'Y' to interact with suspect. ~y~Approach with caution.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
                 {
                     counter++;
 
@@ -145,7 +145,7 @@ namespace JMCalloutsRemastered.Callouts
             }
 
 
-            Game.LogTrivial("JM Callouts Remastered BETA - Refuse to leave is Code 4!");
+            Game.LogTrivial("JM Callouts Remastered - Refuse to leave is Code 4!");
         }
 
     }

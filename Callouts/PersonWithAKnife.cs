@@ -30,10 +30,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(); // Spawns the ped at a specific location //
-            heading = -201.35f;
+            Spawnpoint = new Vector3(-668.56f, -234.05f, 36.91f); // Spawns the ped at a specific location //
+            heading = 205.89f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMaximumDistanceCheck(2500f, Spawnpoint);
+            AddMaximumDistanceCheck(50f, Spawnpoint);
             CalloutMessage = "A citizen reporting an individual carrying a deadly weapon.";
             CalloutPosition = Spawnpoint;
 
@@ -44,6 +44,7 @@ namespace JMCalloutsRemastered.Callouts
         public override bool OnCalloutAccepted()
         {
             Suspect = new Ped("CSB_ANITA", Spawnpoint, heading);
+            Suspect.Tasks.FightAgainstClosestHatedTarget(10f);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
             CalloutInterfaceAPI.Functions.SendMessage(this, "A citizen reporting an individual carrying a deadly weapon. Approach with caution. Respond Code 3");

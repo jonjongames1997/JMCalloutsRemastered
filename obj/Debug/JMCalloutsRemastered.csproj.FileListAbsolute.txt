@@ -9,4 +9,4 @@ D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.
 D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.dll
 D:\JMCalloutsRemastered2023\JMCalloutsRemastered\obj\Debug\JMCalloutsRemastered.pdb
 D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\CalloutInterfaceAPI.dll
-D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\CalloutInterfaceAPI.xml
+D:\JMCalloutsRemastered2023\JMCalloutsRemastered\bin\Debug\RagePluginHookSDK.xml

@@ -29,10 +29,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-12.48f, 7.16f, 71.32f); // Spawns the ped at a specific location //
-            heading = 336.35f; // heading must match or it will glitch //
+            Spawnpoint = new Vector3(28.40f, -1111.36f, 28.79f); // Spawns the ped at a specific location //
+            heading = 81.27f; // heading must match or it will glitch //
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 4500f);
-            AddMinimumDistanceCheck(4500f, Spawnpoint);
+            AddMinimumDistanceCheck(10f, Spawnpoint);
             CalloutMessage = "A citizen called 911 then hung up on dispatch"; // Brief description of callout //
             CalloutPosition = Spawnpoint;
 
@@ -104,7 +104,7 @@ namespace JMCalloutsRemastered.Callouts
                     if(counter == 8)
                     {
                         Game.DisplaySubtitle("~r~Suspect: Snitch! I'm gonna give you the ass whooping of your life, Officer.");
-                        Suspect.Tasks.FightAgainst(Suspect);
+                        Suspect.Tasks.FightAgainstClosestHatedTarget(10f);
                     }
                 }
             }

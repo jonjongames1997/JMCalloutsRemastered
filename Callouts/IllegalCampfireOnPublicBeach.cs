@@ -31,7 +31,7 @@ namespace JMCalloutsRemastered.Callouts
             Spawnpoint = new Vector3(-1539.16f, -1215.71f, 1.88f); // Campfire Spawns at night //
             heading = 250.07f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f); // Blips the area of the callout //
-            AddMaximumDistanceCheck(2500f, Spawnpoint); // Checks to see if the player is in range of the callout //
+            AddMaximumDistanceCheck(10f, Spawnpoint); // Checks to see if the player is in range of the callout //
             CalloutMessage = "Individual started an illegal campfire on the beach!"; // Brief description of the call //
             CalloutPosition = Spawnpoint; // Gives the position of where the callout is located at //
 

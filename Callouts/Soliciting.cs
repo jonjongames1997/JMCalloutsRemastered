@@ -28,10 +28,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-1224.37f, -906.26f, 12.33f);
-            heading = 40.35f;
+            Spawnpoint = new Vector3(-1235.55f, -1449.18f, 4.34f);
+            heading = 183.29f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMaximumDistanceCheck(2500f, Spawnpoint);
+            AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "An Individual asking people for money.";
 
             return base.OnBeforeCalloutDisplayed();
@@ -43,7 +43,6 @@ namespace JMCalloutsRemastered.Callouts
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
             CalloutInterfaceAPI.Functions.SendMessage(this, "An individual is asking people for money and harassing them. Deal with this, Officer.");
-            Game.DisplayNotification("Make sure you're in range before accepting this callout");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.Indigo;
@@ -65,9 +64,9 @@ namespace JMCalloutsRemastered.Callouts
 
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
-                Game.DisplayHelp("Press 'E' to interact with suspect.");
+                Game.DisplayHelp("Press 'Y' to interact with suspect.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
                 {
                     counter++;
 

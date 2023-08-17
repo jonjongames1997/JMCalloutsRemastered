@@ -13,7 +13,7 @@ namespace JMCalloutsRemastered
         public override void Initialize()
         {
             Functions.OnOnDutyStateChanged += Functions_OnOnDutyStateChanged;
-            Settings.LoadSettings();
+            JMCalloutsRemastered.Settings.LoadSettings();
         }
         static void Functions_OnOnDutyStateChanged(bool onDuty)
         {
@@ -32,8 +32,8 @@ namespace JMCalloutsRemastered
                     Game.Console.Print("=============================================== JM Callouts Remastered by OfficerMorrison ================================================");
                     Game.Console.Print();
 
-                    
-                    Game.DisplayNotification("web_lossantospolicedept", "web_lossantospolicedept", "JM Callouts Remastered", "~y~v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() + " ~o~by OfficerMorrison", "~b~successfully loaded!");
+
+                    Game.DisplayNotification("web_lossantospolicedept", "web_lossantospolicedept", "JM Callouts Remastered", "~g~v" + Assembly.GetExecutingAssembly().GetName().Version.ToString() + " ~r~by OfficerMorrison", "~b~successfully loaded!");
 
                     VersionChecker.VersionChecker.isUpdateAvailable();
                     GameFiber.Wait(300);
@@ -45,18 +45,21 @@ namespace JMCalloutsRemastered
             Game.Console.Print("================================================== JM Callouts Remastered ===================================================");
             Game.Console.Print();
             if (Settings._911HangUp) { Functions.RegisterCallout(typeof(_911HangUp)); }
-            if(Settings.CodeKaren) { Functions.RegisterCallout(typeof(CodeKaren)); }
-            if(Settings.IllegalCampfireOnPublicBeach) { Functions.RegisterCallout(typeof(IllegalCampfireOnPublicBeach)); }
-            if(Settings.IllegalProstitution) { Functions.RegisterCallout(typeof(IllegalProstitution)); }
-            if(Settings.IntoxicatedIndividual) { Functions.RegisterCallout(typeof(IntoxicatedIndividual)); }
-            if(Settings.PersonWithAKnife) { Functions.RegisterCallout(typeof(PersonWithAKnife)); }
-            if(Settings.PossibleProstitution) { Functions.RegisterCallout(typeof(PossibleProstitution)); }
-            if(Settings.PublicDisturbance) { Functions.RegisterCallout(typeof(PublicDisturbance)); }
-            if(Settings.RefuseToLeave) { Functions.RegisterCallout(typeof(RefuseToLeave)); }
-            if(Settings.RefuseToPay) { Functions.RegisterCallout(typeof(RefuseToPay)); }
-            if(Settings.Soliciting) { Functions.RegisterCallout(typeof(Soliciting)); }
-            if(Settings.TrespassingOnPrivateProperty) { Functions.RegisterCallout(typeof(TrespassingOnPrivateProperty)); }
-            if(Settings.TrespassingOnRailRoadProperty) { Functions.RegisterCallout(typeof(TrespassingOnRailRoadProperty)); }
+            if (Settings.CodeKaren) { Functions.RegisterCallout(typeof(CodeKaren)); }
+            if (Settings.IllegalCampfireOnPublicBeach) { Functions.RegisterCallout(typeof(IllegalCampfireOnPublicBeach)); }
+            if (Settings.IllegalProstitution) { Functions.RegisterCallout(typeof(IllegalProstitution)); }
+            if (Settings.IntoxicatedIndividual) { Functions.RegisterCallout(typeof(IntoxicatedIndividual)); }
+            if (Settings.PersonWithAKnife) { Functions.RegisterCallout(typeof(PersonWithAKnife)); }
+            if (Settings.PossibleProstitution) { Functions.RegisterCallout(typeof(PossibleProstitution)); }
+            if (Settings.PublicDisturbance) { Functions.RegisterCallout(typeof(PublicDisturbance)); }
+            if (Settings.RefuseToLeave) { Functions.RegisterCallout(typeof(RefuseToLeave)); }
+            if (Settings.RefuseToPay) { Functions.RegisterCallout(typeof(RefuseToPay)); }
+            if (Settings.Soliciting) { Functions.RegisterCallout(typeof(Soliciting)); }
+            if (Settings.TrespassingOnPrivateProperty) { Functions.RegisterCallout(typeof(TrespassingOnPrivateProperty)); }
+            if (Settings.TrespassingOnRailRoadProperty) { Functions.RegisterCallout(typeof(TrespassingOnRailRoadProperty)); }
+            if (Settings.HighSpeedChase) { Functions.RegisterCallout(typeof(HighSpeedChase)); }
+            if (Settings.IntoxicatedIndividualLocation2) { Functions.RegisterCallout(typeof(IntoxicatedIndividualLocation2)); }
+            if (Settings.TrespassingOnConstructionProperty) { Functions.RegisterCallout(typeof(TrespassingOnConstructionProperty)); }
             Game.Console.Print("[LOG]: All callouts of the JMCalloutsRemastered.ini were loaded successfully.");
             Game.Console.Print();
             Game.Console.Print("================================================== JM Callouts Remastered ===================================================");

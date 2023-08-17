@@ -30,7 +30,7 @@ namespace JMCalloutsRemastered.Callouts
             Spawnnpoint = new Vector3(94.63f, -217.37f, 54.49f);
             heading = 53.08f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnnpoint, 2500f);
-            AddMinimumDistanceCheck(2500f, Spawnnpoint);
+            AddMinimumDistanceCheck(100f, Spawnnpoint);
             CalloutPosition = Spawnnpoint;
 
             return base.OnBeforeCalloutDisplayed();
@@ -64,7 +64,7 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press ~y~Y~~ to talk to Suspect. ~y~Approach with caution.", false);
+                Game.DisplayHelp("Press ~y~Y ~w~to talk to Suspect. ~y~Approach with caution.", false);
 
                 if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
                 {
@@ -122,7 +122,7 @@ namespace JMCalloutsRemastered.Callouts
             }
 
 
-            Game.LogTrivial("JM Callouts Remastered BETA - Intoxicated Individual is Code 4!");
+            Game.LogTrivial("JM Callouts Remastered - Intoxicated Individual is Code 4!");
         }
     }
 }

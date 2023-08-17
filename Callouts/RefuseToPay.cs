@@ -31,7 +31,7 @@ namespace JMCalloutsRemastered.Callouts
             Spawnpoint = new Vector3(-1018.68f, -1356.36f, 5.55f);
             heading = 338.10f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMaximumDistanceCheck(2500f, Spawnpoint);
+            AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "Individual Refusing to pay";
 
             return base.OnBeforeCalloutDisplayed();

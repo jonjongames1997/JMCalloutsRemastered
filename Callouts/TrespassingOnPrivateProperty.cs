@@ -31,7 +31,7 @@ namespace JMCalloutsRemastered.Callouts
             Spawnpoint = new Vector3(-885.71f, 41.33f, 48.76f);
             heading = 64.02f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 1900f);
-            AddMaximumDistanceCheck(1900f, Spawnpoint);
+            AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutPosition = Spawnpoint;
 
             return base.OnBeforeCalloutDisplayed();
@@ -65,9 +65,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press ~r~E~ to talk to Suspect. Approach with caution.", false);
+                Game.DisplayHelp("Press ~r~Y~ ~w~to talk to Suspect. ~y~Approach with caution.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
                 {
                     counter++;
 
@@ -132,7 +132,7 @@ namespace JMCalloutsRemastered.Callouts
             }
 
 
-            Game.LogTrivial("JM Callouts Remastered BETA - Trespasing on Private Property is Code 4!");
+            Game.LogTrivial("JM Callouts Remastered - Trespasing on Private Property is Code 4!");
         }
 
     }
