@@ -8,7 +8,7 @@ using System.Windows.Forms;
 [assembly: Rage.Attributes.Plugin("IniFileDemo", Description = "Shows how to set up and use a .ini file.", Author = "Albo1125")]
 
 //To try this out, compile this code and place the .dll and .ini file in your /plugins folder.
-namespace IniFileDemo
+namespace IniFile
 {
     public class EntryPoint
     {
