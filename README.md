@@ -13,8 +13,6 @@ My Personal Discord: https://discord.gg/7q2cZkewQ9 (Report Issues or get Early A
 
 Version Checker code was from UnitedCallouts by Sebi3 as a GUIDE.
 
-EntryPoint.cs code was from LSPDFR API by Albo1125
-
 Download the dependecies:
 
 Rage Plugin Hook SDK: https://ragepluginhook.net/
