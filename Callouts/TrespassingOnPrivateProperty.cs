@@ -28,9 +28,9 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-885.71f, 41.33f, 48.76f);
-            heading = 64.02f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 1900f);
+            Spawnpoint = new Vector3(131.11f, -1301.31f, 29.23f); // Vanilla Unicorn //
+            heading = 25.62f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2000f);
             AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutPosition = Spawnpoint;
 
@@ -65,9 +65,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press ~r~Y~ ~w~to talk to Suspect. ~y~Approach with caution.", false);
+                Game.DisplayHelp("Press ~r~E~ ~w~to talk to Suspect. ~y~Approach with caution.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 
@@ -81,19 +81,19 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 3)
                     {
-                        Game.DisplaySubtitle("Player: What are you doing on this property? We gotten a call about you being on this property without permission.");
+                        Game.DisplaySubtitle("~y~Player: ~w~Can you tell me what's going on here? We gotten a call about you being on this property when you are trespassed.");
                     }
                     if(counter == 4)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~w~ Trying to ask my ex-boyfriend/girlfriend to pose as model for my photography ad. Is that a problem?");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Trying to get a girl on my lap cause I have been working hard all day and I deserve to have fun. Is that a problem?");
                     }
                     if(counter == 5)
                     {
-                        Game.DisplaySubtitle("Player: Yes, the owner of this house doesn't want you here and they said you've been trespassed before. I need you to leave the property cause the owner is requesting a restraining order against you.");
+                        Game.DisplaySubtitle("Player: Yes, the owner of this business doesn't want you here. I need you to leave the property cause the owner is requesting a restraining order against you.");
                     }
                     if(counter == 6)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~w~ That son of a bitch! I'll wait till I see her/him in public.");
+                        Game.DisplaySubtitle("~r~Suspect: ~w~That mothafucka!");
                     }
                     if(counter == 7)
                     {
@@ -102,12 +102,12 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if(counter == 8)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~w~ You'll never take me alive, Copper!!");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Fine! I will have my revenge.");
                     }
                     if(counter == 9)
                     {
-                        Game.DisplayNotification("Conversation has ended. Handle the situation your way, Officer.");
-                        Suspect.Tasks.FightAgainst(Suspect);
+                        Game.DisplayNotification("Conversation has ended.");
+                        Suspect.Tasks.Wander();
                     }
                 }
             }

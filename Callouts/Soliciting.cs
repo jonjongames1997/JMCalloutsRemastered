@@ -28,9 +28,9 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-1235.55f, -1449.18f, 4.34f);
-            heading = 183.29f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            Spawnpoint = new Vector3(154.39f, -987.48f, 30.09f); // Legion Square in Mission Row //
+            heading = 165.04f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2000f);
             AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "An Individual asking people for money.";
 
@@ -64,9 +64,9 @@ namespace JMCalloutsRemastered.Callouts
 
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
-                Game.DisplayHelp("Press 'Y' to interact with suspect.");
+                Game.DisplayHelp("Press ~y~E ~w~to talk to Suspect. ~y~Approach with caution.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 
@@ -106,7 +106,7 @@ namespace JMCalloutsRemastered.Callouts
             }
 
 
-            Game.LogTrivial("JM Callouts Remastered BETA - Soliciting is Code 4!");
+            Game.LogTrivial("JM Callouts Remastered - Soliciting is Code 4!");
         }
 
     }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace JMCalloutsRemastered.Callouts
 {
 
-    [CalloutInterface("Code Karen", CalloutProbability.Medium, "Code 1", "LSPD")]
+    [CalloutInterface("Code Karen", CalloutProbability.Medium, "An individual causing a scene", "Code 2", "LSPD")]
 
 
     public class CodeKaren : Callout
@@ -30,10 +30,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-623.00f, -233.19f, 38.06f); // Vangelico Jewellery Store // 
-            heading = 312.93f;
+            Spawnpoint = new Vector3(-624.7086f, -231.8441f, 38.05705f); // Vangelico Jewellery Store // 
+            heading = 315.2649f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMinimumDistanceCheck(10f, Spawnpoint);
+            AddMinimumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "A business employee requesting an officer to escort a individual causing a scene";
             CalloutPosition = Spawnpoint;
 
@@ -42,7 +42,7 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnCalloutAccepted()
         {
-            Game.DisplayNotification("This Callout requires 'Open All Interiors' mod. Make sure to have it installed. If you do have it installed, you're good!");
+            Game.DisplayNotification("This Callout requires ~y~Open All Interiors~w~ mod. ~g~Make sure to have it installed.~w~ If you do have it installed, you're good!");
             Suspect = new Ped(Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
@@ -69,9 +69,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'Y' to interact with suspect.");
+                Game.DisplayHelp("Press ~y~'E'~w~ to interact with suspect.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 
@@ -102,7 +102,8 @@ namespace JMCalloutsRemastered.Callouts
                     if(counter == 7)
                     {
                         Game.DisplayNotification("Arrest the suspect!");
-                        Suspect.Tasks.FightAgainst(Suspect);
+                        Suspect.Tasks.FightAgainst(Game.LocalPlayer.Character);
+                        Suspect.Inventory.GiveNewWeapon("WEAPON_KNIFE", 500, true);
                     }
                 }
             }

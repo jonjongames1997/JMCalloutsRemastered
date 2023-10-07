@@ -29,10 +29,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(28.40f, -1111.36f, 28.79f); // Spawns the ped at a specific location //
-            heading = 81.27f; // heading must match or it will glitch //
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 4500f);
-            AddMinimumDistanceCheck(10f, Spawnpoint);
+            Spawnpoint = new Vector3(1082.087f, -346.2961f, 67.1872f); // Mirror Park near Horny's //
+            heading = 146.671f; // heading must match or it will glitch //
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 500f);
+            AddMinimumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "A citizen called 911 then hung up on dispatch"; // Brief description of callout //
             CalloutPosition = Spawnpoint;
 
@@ -67,9 +67,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'Y' to speak with the ~r~suspect.", false);
+                Game.DisplayHelp("Press 'E' to speak with the ~r~suspect.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 

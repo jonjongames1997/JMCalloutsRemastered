@@ -18,42 +18,42 @@ namespace JMCalloutsRemastered.Callouts
     public class TrespassingOnConstructionProperty : Callout
     {
         // General Variables //
-        private Ped _Suspect;
-        private Blip _SuspectBlip;
-        private Vector3 _Spawnpoint;
-        private float _heading;
-        private string _malefemale;
-        private int _counter;
+        private Ped Suspect;
+        private Blip SuspectBlip;
+        private Vector3 Spawnpoint;
+        private float heading;
+        private string malefemale;
+        private int counter;
 
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            _Spawnpoint = new Vector3(7.788585f, -394.9392f, 39.41744f);
-            _heading = 218.558f;
-            ShowCalloutAreaBlipBeforeAccepting(_Spawnpoint, 1900f);
-            AddMinimumDistanceCheck(100f, _Spawnpoint);
-            CalloutPosition = _Spawnpoint;
+            Spawnpoint = new Vector3(7.788585f, -394.9392f, 39.41744f);
+            heading = 218.558f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 500f);
+            AddMinimumDistanceCheck(100f, Spawnpoint);
+            CalloutPosition = Spawnpoint;
 
             return base.OnBeforeCalloutDisplayed();
         }
 
         public override bool OnCalloutAccepted()
         {
-            _Suspect = new Ped(_Spawnpoint, _heading);
-            _Suspect.IsPersistent = true;
-            _Suspect.BlockPermanentEvents = true;
+            Suspect = new Ped(Spawnpoint, heading);
+            Suspect.IsPersistent = true;
+            Suspect.BlockPermanentEvents = true;
             CalloutInterfaceAPI.Functions.SendMessage(this, "A citizen reporting a trespasser on construction property.");
 
-            _SuspectBlip = _Suspect.AttachBlip();
-            _SuspectBlip.Color = System.Drawing.Color.Beige;
-            _SuspectBlip.IsRouteEnabled = true;
+            SuspectBlip = Suspect.AttachBlip();
+            SuspectBlip.Color = System.Drawing.Color.Beige;
+            SuspectBlip.IsRouteEnabled = true;
 
-            if (_Suspect.IsMale)
-                _malefemale = "Sir";
+            if (Suspect.IsMale)
+                malefemale = "Sir";
             else
-                _malefemale = "Ma'am";
+                malefemale = "Ma'am";
 
-            _counter = 0;
+            counter = 0;
 
             return base.OnCalloutAccepted();
         }
@@ -62,48 +62,48 @@ namespace JMCalloutsRemastered.Callouts
         {
             base.Process();
 
-            if (Game.LocalPlayer.Character.DistanceTo(_Suspect) <= 10f)
+            if (Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press ~r~Y~~w~to talk to Suspect. ~y~Approach with caution.", false);
+                Game.DisplayHelp("Press ~r~E~~w~to talk to Suspect. ~y~Approach with caution.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
-                    _counter++;
+                    counter++;
 
-                    if (_counter == 1)
+                    if (counter == 1)
                     {
-                        Game.DisplaySubtitle("Player: Excuse me, " + _malefemale + ". Can you come talk to me for a minute?");
+                        Game.DisplaySubtitle("Player: Excuse me, " + malefemale + ". Can you come talk to me for a minute?");
                     }
-                    if (_counter == 2)
+                    if (counter == 2)
                     {
                         Game.DisplaySubtitle("~r~Suspect:~w~ What do you want? I'm filming here.");
                     }
-                    if (_counter == 3)
+                    if (counter == 3)
                     {
                         Game.DisplaySubtitle("Player: You can't be on constrcution property. It's against the law. Are you an employee of the construction company?");
                     }
-                    if (_counter == 4)
+                    if (counter == 4)
                     {
                         Game.DisplaySubtitle("~r~Suspect:~w~ Yes. I'm surveying the site to write down important information for the mayor. Is that a problem?");
                     }
-                    if (_counter == 5)
+                    if (counter == 5)
                     {
                         Game.DisplaySubtitle("Player: No. Just need to verify. Do you mind if I run your information real quick? It's a procedure I have to follow.");
                     }
-                    if (_counter == 6)
+                    if (counter == 6)
                     {
                         Game.DisplaySubtitle("~r~Suspect:~w~ Oh, shit! They know!");
-                        _Suspect.Tasks.ReactAndFlee(_Suspect);
+                        Suspect.Tasks.ReactAndFlee(Suspect);
                     }
-                    if (_counter == 7)
+                    if (counter == 7)
                     {
                         Game.DisplaySubtitle("Conversation Ended!");
                     }
                 }
             }
 
-            if (_Suspect.IsCuffed || _Suspect.IsDead || Game.LocalPlayer.Character.IsDead || !_Suspect.Exists())
+            if (Suspect.IsCuffed || Suspect.IsDead || Game.LocalPlayer.Character.IsDead || !Suspect.Exists())
             {
                 End();
             }
@@ -113,13 +113,13 @@ namespace JMCalloutsRemastered.Callouts
         {
             base.End();
 
-            if (_Suspect.Exists())
+            if (Suspect.Exists())
             {
-                _Suspect.Dismiss();
+                Suspect.Dismiss();
             }
-            if (_SuspectBlip.Exists())
+            if (SuspectBlip.Exists())
             {
-                _SuspectBlip.Delete();
+                SuspectBlip.Delete();
             }
 
 

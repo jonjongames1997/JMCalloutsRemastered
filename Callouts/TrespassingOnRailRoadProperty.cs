@@ -31,7 +31,7 @@ namespace JMCalloutsRemastered.Callouts
         {
             Spawnpoint = new Vector3(452.94f, -1648.89f, 29.97f);
             heading = 225.98f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 500f);
             AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "A citizen is reporting a suspicious person on railroad tracks.";
             CalloutPosition = Spawnpoint;
@@ -67,9 +67,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'Y' to interact with Suspect.");
+                Game.DisplayHelp("Press 'E' to interact with Suspect.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 

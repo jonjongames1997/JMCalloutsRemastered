@@ -28,9 +28,9 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-49.50f, -214.03f, 45.80f);
-            heading = 175.30f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            Spawnpoint = new Vector3(-622.29f, -761.78f, 26.21f);
+            heading = 85.83f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2000f);
             AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "Citizens reporting a young female selling her body for money.";
             CalloutPosition = Spawnpoint;
@@ -67,9 +67,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'Y' to interact with suspect.");
+                Game.DisplayHelp("Press ~y~E ~w~to talk to Suspect. ~y~Approach with caution.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 
@@ -124,7 +124,7 @@ namespace JMCalloutsRemastered.Callouts
                     if(counter == 13)
                     {
                         Game.DisplaySubtitle("Conversation ended. Arrest the suspect.");
-                        Suspect.Tasks.Wander(); // What the suspect will do after the conversation ends //
+                        Suspect.Tasks.FightAgainst(Game.LocalPlayer.Character); // What the suspect will do after the conversation ends //
                     }
                 }
             }

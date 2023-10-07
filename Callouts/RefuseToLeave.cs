@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace JMCalloutsRemastered.Callouts
 {
 
-    [CalloutInterface("Refuse To Leave", CalloutProbability.Medium, "An individual refuses to leave property", "Code 2", "BSCO")]
+    [CalloutInterface("Refuse To Leave", CalloutProbability.Medium, "An individual refuses to leave property", "Code 2", "LSPD")]
 
     public class RefuseToLeave : Callout
     {
@@ -29,9 +29,9 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(1198.61f, 2706.30f, 38.22f);
-            heading = 182.75f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            Spawnpoint = new Vector3(-821.94f, -1073.82f, 11.33f); // Near Floyd's Apartment //
+            heading = 45.67f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2000f);
             AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "Individual refusing to leave property by business owner/employee.";
             CalloutPosition = Spawnpoint;
@@ -41,10 +41,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnCalloutAccepted()
         {
-            Suspect = new Ped(Spawnpoint, heading); // For Testing purposes //
+            Suspect = new Ped("g_f_y_families_01", Spawnpoint, heading); // For Testing purposes //
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "Route 68 Business employee told the individual to leave the property but refuses to. Employee suspects the individual to be under the influence.");
+            CalloutInterfaceAPI.Functions.SendMessage(this, "Business employee told the individual to leave the property but refuses to. Employee suspects the individual to be under the influence.");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.BlueViolet;
@@ -67,9 +67,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'Y' to interact with suspect. ~y~Approach with caution.");
+                Game.DisplayHelp("Press 'E' to interact with suspect. ~y~Approach with caution.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 

@@ -28,9 +28,9 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(481.524f, -1689.046f, 29.240f);
-            heading = 223.525f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            Spawnpoint = new Vector3(-535.76f, -849.20f, 29.44f); // Near Lucky Plucker in Little Seoul // 
+            heading = 28.60f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2000f);
             AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "Citizens reporting a young female possibly selling her body for money.";
             CalloutPosition = Spawnpoint;
@@ -67,9 +67,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 0f)
             {
 
-                Game.DisplayHelp("Press 'Y' to interact with suspect.");
+                Game.DisplayHelp("Press 'E' to interact with suspect.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 

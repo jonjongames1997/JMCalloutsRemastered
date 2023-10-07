@@ -18,119 +18,124 @@ namespace JMCalloutsRemastered.Callouts
     public class PersonWithAKnife : Callout
     {
 
+        private string[] pedList = new string[] { "A_F_M_SouCent_01", "A_F_M_SouCent_02", "A_M_Y_Skater_01", "A_M_M_FatLatin_01", "A_M_M_EastSA_01", "A_M_Y_Latino_01", "G_M_Y_FamDNF_01",
+                                                  "G_M_Y_FamCA_01", "G_M_Y_BallaSout_01", "G_M_Y_BallaOrig_01", "G_M_Y_BallaEast_01", "G_M_Y_StrPunk_02", "S_M_Y_Dealer_01", "A_M_M_RurMeth_01",
+                                                  "A_M_M_Skidrow_01", "A_M_Y_MexThug_01", "G_M_Y_MexGoon_03", "G_M_Y_MexGoon_02", "G_M_Y_MexGoon_01", "G_M_Y_SalvaGoon_01", "G_M_Y_SalvaGoon_02",
+                                                  "G_M_Y_SalvaGoon_03", "G_M_Y_Korean_01", "G_M_Y_Korean_02", "G_M_Y_StrPunk_01" };
 
-        // General Variables //
         private Ped Suspect;
-        private Blip SuspectBlip;
         private Vector3 Spawnpoint;
-        private float heading;
-        private string malefemale;
-        private int counter;
-
+        private Vector3 SearchArea;
+        private Blip suspectBlip;
+        private LHandle pursuit;
+        private int scenario = 0;
+        private bool hasBegunAttacking = false;
+        private bool isArmed = false;
+        private bool hasPursuitBegun = false;
+        private bool hasSpoke = false;
+        private bool pursuitCreated = false;
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-668.56f, -234.05f, 36.91f); // Spawns the ped at a specific location //
-            heading = 205.89f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
-            AddMaximumDistanceCheck(50f, Spawnpoint);
-            CalloutMessage = "A citizen reporting an individual carrying a deadly weapon.";
+            scenario = new Random().Next(0, 100);
+            Spawnpoint = World.GetNextPositionOnStreet(Game.LocalPlayer.Character.Position.Around(1000f));
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 1000f);
+            AddMinimumDistanceCheck(100f, Spawnpoint);
+            CalloutMessage = "Citizen's reporting a person carrying a deadly weapon";
             CalloutPosition = Spawnpoint;
 
             return base.OnBeforeCalloutDisplayed();
         }
 
-
         public override bool OnCalloutAccepted()
         {
-            Suspect = new Ped("CSB_ANITA", Spawnpoint, heading);
-            Suspect.Tasks.FightAgainstClosestHatedTarget(10f);
-            Suspect.IsPersistent = true;
+            Suspect = new Ped(pedList[new Random().Next((int)pedList.Length)], Spawnpoint, 0f);
             Suspect.BlockPermanentEvents = true;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "A citizen reporting an individual carrying a deadly weapon. Approach with caution. Respond Code 3");
+            Suspect.IsPersistent = true;
+            Suspect.Tasks.Wander();
 
-            SuspectBlip = Suspect.AttachBlip();
-            SuspectBlip.Color = System.Drawing.Color.Brown;
-            SuspectBlip.IsRouteEnabled = true;
-
-            if (Suspect.IsMale)
-                malefemale = "sir";
-            else
-                malefemale = "ma'am";
-
-            counter = 0;
+            SearchArea = Spawnpoint.Around2D(1f, 2f);
+            suspectBlip = new Blip(SearchArea, 80f);
+            suspectBlip.Color = Color.Yellow;
+            suspectBlip.EnableRoute(Color.Yellow);
+            suspectBlip.Alpha = 0.5f;
 
             return base.OnCalloutAccepted();
         }
 
-        public override void Process()
+        public override void OnCalloutNotAccepted()
         {
-            base.Process();
+            if (suspectBlip) suspectBlip.Delete();
+            if (Suspect) Suspect.Delete();
 
-            if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
-            {
-
-                Game.DisplayHelp("Press 'Y' to interact with suspect.");
-
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
-                {
-                    counter++;
-
-                    if(counter == 1)
-                    {
-                        Game.DisplaySubtitle("Player: Freeze, " + malefemale + ". Let me see your hands!");
-                    }
-                    if(counter == 2)
-                    {
-                        Game.DisplaySubtitle("~r~Suspect: What do you want now, pigs?");
-                    }
-                    if(counter == 3)
-                    {
-                        Game.DisplaySubtitle("Player: Drop the weapon! I don't want to shoot you.");
-                    }
-                    if(counter == 4)
-                    {
-                        Game.DisplaySubtitle("~r~Suspect: Fuck you! I can carry a knife how I like anytime! I'm not harming anyone!");
-                    }
-                    if(counter == 5)
-                    {
-                        Game.DisplaySubtitle("Player: I don't give a fuck! DROP THE WEAPON NOW! OR WE'LL FORCE TO SHOOT YOU GRAVEYARD DEAD!");
-                    }
-                    if(counter == 6)
-                    {
-                        Game.DisplaySubtitle("~r~Suspect: Bring it on, Cupcake!");
-                    }
-                    if(counter >= 7)
-                    {
-                        Game.DisplaySubtitle("No further speech.");
-                        Suspect.Tasks.FightAgainst(Suspect);
-                    }
-                }
-            }
-            if (Suspect.IsCuffed || Suspect.IsDead || Game.LocalPlayer.Character.IsDead || !Suspect.Exists())
-            {
-                End();
-            }
-
+            base.OnCalloutNotAccepted();
         }
 
+        public override void Process()
+        {
+
+            GameFiber.StartNew(delegate
+            {
+                if (Suspect.DistanceTo(Game.LocalPlayer.Character.GetOffsetPosition(Vector3.RelativeFront)) < 18f && !isArmed)
+                {
+                    Suspect.Inventory.GiveNewWeapon("WEAPON_KNIFE", 500, true);
+                    isArmed = true;
+                }
+                if (Suspect && Suspect.DistanceTo(Game.LocalPlayer.Character.GetOffsetPosition(Vector3.RelativeFront)) < 18f && !hasBegunAttacking)
+                {
+                    if (scenario > 40)
+                    {
+                        Suspect.KeepTasks = true;
+                        Suspect.Tasks.FightAgainst(Game.LocalPlayer.Character);
+                        hasBegunAttacking = true;
+                        switch (new Random().Next(1, 3))
+                        {
+                            case 1:
+                                Game.DisplaySubtitle("~r~Suspect: ~w~I'm gonna kill everyone!", 4000);
+                                hasSpoke = true;
+                                break;
+                            case 2:
+                                Game.DisplaySubtitle("~r~Suspect: ~w~You'll never take me alive, Coppers!", 4000);
+                                hasSpoke = true;
+                                break;
+                            case 3:
+                                Game.DisplaySubtitle("~r~Suspect: ~w~Take your last breath of fresh air, motherfucker!", 4000);
+                                hasSpoke = true;
+                                break;
+                            default: break;
+                        }
+                        GameFiber.Wait(2000);
+                    }
+                    else
+                    {
+                        if (!hasPursuitBegun)
+                        {
+                            pursuit = LSPD_First_Response.Mod.API.Functions.CreatePursuit();
+                            LSPD_First_Response.Mod.API.Functions.AddPedToPursuit(pursuit, Suspect);
+                            LSPD_First_Response.Mod.API.Functions.SetPursuitIsActiveForPlayer(pursuit, true);
+                            hasPursuitBegun = true;
+                        }
+                    }
+                }
+                if (Game.LocalPlayer.Character.IsDead) End();
+                if (Game.IsKeyDown(Settings.EndCalloutKey)) End();
+                if (Suspect && Suspect.IsDead) End();
+                if (Suspect && Suspect.IsCuffed) End();
+
+            }, "Person With A Knife [JM Callouts Remastered]");
+
+            base.Process();
+        }
 
         public override void End()
         {
+
+            if (Suspect) Suspect.Dismiss();
+            if (suspectBlip) suspectBlip.Delete();
+            Game.DisplayNotification("web_lossantospolicedept", "web_lossantospolicedept", "~w~JM Callouts Remastered", "~y~Person With a Knife", "~b~You: ~w~Dispatch we're code 4. Show me back ~g~10-8.");
+            Game.DisplayNotification("Good Job, Officer! You are getting a promotion.");
+
             base.End();
-
-            if (Suspect.Exists())
-            {
-                Suspect.Dismiss();
-            }
-            if (SuspectBlip.Exists())
-            {
-                SuspectBlip.Delete();
-            }
-
-            Game.LogTrivial("JM Callouts Remastered - Person With A Knife is Code 4!");
-
         }
-
     }
 }

@@ -28,10 +28,10 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-1539.16f, -1215.71f, 1.88f); // Campfire Spawns at night //
-            heading = 250.07f;
+            Spawnpoint = new Vector3(-1537.564f, -1214.748f, 1.887064f); // Campfire Spawns at night //
+            heading = 133.8988f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f); // Blips the area of the callout //
-            AddMaximumDistanceCheck(10f, Spawnpoint); // Checks to see if the player is in range of the callout //
+            AddMaximumDistanceCheck(100f, Spawnpoint); // Checks to see if the player is in range of the callout //
             CalloutMessage = "Individual started an illegal campfire on the beach!"; // Brief description of the call //
             CalloutPosition = Spawnpoint; // Gives the position of where the callout is located at //
 
@@ -66,9 +66,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'Y' to speak with the ~r~suspect.", false);
+                Game.DisplayHelp("Press 'E' to speak with the ~r~suspect.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 
@@ -108,10 +108,7 @@ namespace JMCalloutsRemastered.Callouts
                     {
                         Game.DisplaySubtitle("Conversation has ended!");
                         Game.DisplayNotification("Arrest the suspect, Officer.");
-                    }
-                    if(counter == 10)
-                    {
-                        Suspect.Tasks.FightAgainst(Suspect);
+                        Suspect.Tasks.FightAgainstClosestHatedTarget(10f);
                     }
                 }
             }

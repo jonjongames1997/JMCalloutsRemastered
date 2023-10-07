@@ -9,6 +9,8 @@ using LSPD_First_Response.Mod.Callouts;
 using System.Drawing;
 using CalloutInterfaceAPI;
 using System.Windows.Forms;
+using JMCalloutsRemastered.Callouts;
+using JMCalloutsRemastered.Stuff;
 
 namespace JMCalloutsRemastered.Callouts
 {
@@ -27,7 +29,7 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnnpoint = new Vector3(94.63f, -217.37f, 54.49f);
+            Spawnnpoint = new Vector3(94.63f, -217.37f, 54.49f); // Shopping Center in Vinewood //
             heading = 53.08f;
             ShowCalloutAreaBlipBeforeAccepting(Spawnnpoint, 2500f);
             AddMinimumDistanceCheck(100f, Spawnnpoint);
@@ -64,9 +66,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press ~y~Y ~w~to talk to Suspect. ~y~Approach with caution.", false);
+                Game.DisplayHelp("Press ~y~E ~w~to talk to Suspect. ~y~Approach with caution.", false);
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 

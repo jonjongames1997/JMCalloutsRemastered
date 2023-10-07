@@ -28,9 +28,9 @@ namespace JMCalloutsRemastered.Callouts
 
         public override bool OnBeforeCalloutDisplayed()
         {
-            Spawnpoint = new Vector3(-1018.68f, -1356.36f, 5.55f);
-            heading = 338.10f;
-            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2500f);
+            Spawnpoint = new Vector3(-707.51f, -912.68f, 19.22f); // LTD Gas Station Near Weazel News //
+            heading = 267.11f;
+            ShowCalloutAreaBlipBeforeAccepting(Spawnpoint, 2000f);
             AddMaximumDistanceCheck(100f, Spawnpoint);
             CalloutMessage = "Individual Refusing to pay";
 
@@ -42,7 +42,7 @@ namespace JMCalloutsRemastered.Callouts
             Suspect = new Ped(Spawnpoint, heading);
             Suspect.IsPersistent = true;
             Suspect.BlockPermanentEvents = true;
-            CalloutInterfaceAPI.Functions.SendMessage(this, "An Individual is refusing to pay for their food. The individual is being little aggressive. Approach with caution");
+            CalloutInterfaceAPI.Functions.SendMessage(this, "An Individual is refusing to pay for their gas. The individual is being little aggressive. Approach with caution");
 
             SuspectBlip = Suspect.AttachBlip();
             SuspectBlip.Color = System.Drawing.Color.HotPink;
@@ -65,9 +65,9 @@ namespace JMCalloutsRemastered.Callouts
             if(Game.LocalPlayer.Character.DistanceTo(Suspect) <= 10f)
             {
 
-                Game.DisplayHelp("Press 'Y' to interact with suspect.");
+                Game.DisplayHelp("Press 'E' to interact with suspect.");
 
-                if (Game.IsKeyDown(System.Windows.Forms.Keys.Y))
+                if (Game.IsKeyDown(System.Windows.Forms.Keys.E))
                 {
                     counter++;
 
@@ -89,7 +89,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 5)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~w~ I was ordering my food and went to sit down then they served me my food, I found hair in the food. I told them that I wasn't gonna pay for this. The cook or whatever said said that I put my own hair in the food.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ I was coming to get gas and the pump had no gas in it. I came in here to talk to the cashier about it and said that I'm lying.");
                     }
                     if (counter == 6)
                     {
@@ -97,7 +97,7 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 7)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~w~ I told them, 'No I didn't this is what was served to me and I'm not paying for this food'. Then they called the cops and now I'm talking to you.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ I told them, 'I'm not lying, go check it for yourself'. Then they called the cops and now I'm talking to you.");
                     }
                     if (counter == 8)
                     {
@@ -105,15 +105,15 @@ namespace JMCalloutsRemastered.Callouts
                     }
                     if (counter == 9)
                     {
-                        Game.DisplaySubtitle("~r~Suspect:~w~ Yeah, fine. I'm in a hurry to a film production in Rockford Hills.");
+                        Game.DisplaySubtitle("~r~Suspect:~w~ Yeah, fine. I'm in a hurry to record my tv show called 'Cougars Gone Wild'.");
                     }
                     if (counter == 10)
                     {
-                        Game.DisplayHelp("Go up to the business and review the CCTV footage. Click 'Y' to continue the investigation.");
+                        Game.DisplayHelp("Go up to the business and review the CCTV footage then click 'E' to continue the investigation.");
                     }
                     if (counter == 11)
                     {
-                        Game.DisplayNotification("You reviewed the CCTV footage. Suspect DID put hair into his own food. Arrest the suspect and charge him/her for simple theft.");
+                        Game.DisplayNotification("You reviewed the CCTV footage. Suspect pumped gas in their car. Refused to pay for the gas.");
                     }
                     if (counter == 12)
                     {
