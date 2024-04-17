@@ -11,6 +11,7 @@ This is a list of Supported/Not Suppported versions for JM Callouts Remastered
 # Legend
 
 | ❌ - Not Supported
+
 | ✅ - Supported
 
 ## Older Verisons Support
