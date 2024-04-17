@@ -8,6 +8,11 @@ This is a list of Supported/Not Suppported versions for JM Callouts Remastered
 | ------------- | ------------------ |
 | 8757          | :white_check_mark: |
 
+# Legend
+
+| ❌ - Not Supported
+| ✅ - Supported
+
 ## Older Verisons Support
 
 Once the callout pack upgrades to the new version of LSPDFR, I cannot support older versions of JM Callouts Remastered. You need to download
