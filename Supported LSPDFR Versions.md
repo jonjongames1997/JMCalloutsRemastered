@@ -6,7 +6,7 @@ This is a list of Supported/Not Suppported versions for JM Callouts Remastered
 
 | Build Version    | Supported          |
 | -------------    | ------------------ |
-| 8757.3179        |  ⚙️ In Progress    |
+| 8757.3179        |  ✅               |
 | 8757.3095        | :x:                |
 
 # Legend
