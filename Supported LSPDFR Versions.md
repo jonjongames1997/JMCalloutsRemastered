@@ -6,8 +6,8 @@ This is a list of Supported/Not Suppported versions for JM Callouts Remastered
 
 | Build Version    | Supported          |
 | -------------    | ------------------ |
-| 8943.3337        |  ⚙️               |
-| 8943.3323        |  ⚙️               |
+| 8943.3337        |  ✅               |
+| 8943.3323        |  ✅               |
 | 8943.3274        |  ✅                |
 | 8943.3258        |  ✅                |
 | 8757.3179        |  ❌ (Out of Support)|
