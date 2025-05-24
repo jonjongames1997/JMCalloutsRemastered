@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/status-Deprecated-red" />
+
 # Source Code is OUTDATED
 No plans on Updating the source code.
 
